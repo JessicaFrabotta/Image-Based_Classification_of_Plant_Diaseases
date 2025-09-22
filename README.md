@@ -13,7 +13,11 @@ The dataset is a **combination of two main sources**:
 - **Personal dataset**  
   - 15,157 images across 16 different classes.  
   - 7 classes were integrated into the final dataset.  
-  - The full dataset is also available on *Kaggle*.  
+  - The full dataset is also available on *Kaggle*[kaggle](https://www.kaggle.com/datasets/jessicafrabotta/plant-diseases-dataset-with-augmentation).
+
+<p align="center">
+  <img src="Wio_Terminal_Mode.jpeg" width="40%" />
+</p>
 
 - **PlantVillage dataset**  
   - A popular benchmark dataset for plant disease classification.  
