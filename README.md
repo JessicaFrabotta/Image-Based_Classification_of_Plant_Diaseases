@@ -95,11 +95,4 @@ A simple **Streamlit web app** was created to showcase the results.
 | Random Forest (basic)                   | 0.18     | 0.24      | 0.18   | 0.12     |
 | Random Forest + DNN Featurization (CIFAR-10) | 0.53 | 0.53      | 0.53   | 0.53     |
 
----
 
-## 📌 How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/plant-disease-classification.git
-   cd plant-disease-classification
