@@ -1,0 +1,11 @@
+Before running the command to create the docker image, enter the directory named "1758527_app" from your terminal. 
+You should be on the same level of the files app.py, requirements.txt etc.
+
+Now run the command:
+docker build -t 1758527_app .
+
+At this point create a container with the command:
+
+docker run -dp 8501:8501 1758527_app
+
+You can find the app in the container section of Docker Desktop.
