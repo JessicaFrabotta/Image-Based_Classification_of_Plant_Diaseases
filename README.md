@@ -1,64 +1,105 @@
-# 🌿 Image-Based Plant Disease Classification
+# 🌱 Image-Based Classification of Plant Diseases
 
-This project focuses on the **classification of plant diseases from images**, a crucial task in agriculture to prevent the spread of pandemics and improve crop health.  
-The model is a **multi-class classifier** capable of identifying **30 different disease classes**.
+This project focuses on **identifying and classifying plant diseases** using **Machine Learning** models and **Apache Spark**.  
+The main goal is to assist farmers in **early disease detection**, a crucial step to prevent crop pandemics and the spread of plant diseases.  
 
----
-
-## 💻 Dataset
-
-The training data comes from the combination of two datasets:
-
-- **PlantVillage Dataset**  
-  - Augmented version of the popular dataset  
-  - **60,342 images**  
-  - **38 classes**
-
-- **Custom Dataset**  
-  - Personally created with **15,157 images** and **16 classes**  
-  - Photos taken by myself and labeled with the help of my parents (farmers)  
-  - Due to memory constraints, only the **7 largest classes** were included in the final dataset  
-
-🔹 Final dataset: mixed from both sources, with all images **augmented** and resized to **256×256 pixels**.
+It is a **multi-class classification task** involving **30 different disease classes**.
 
 ---
 
-## 🛠️ Model
+## 📂 Dataset
 
-- Implemented with **TensorFlow** and **Keras**  
-- Distributed training using **Horovod**  
-- Architecture: **Convolutional Neural Network (CNN)**  
-  - ~ **1.6 million parameters**  
-- Custom **Weighted Categorical Cross-Entropy loss** to handle unbalanced classes  
+The dataset is a **combination of two main sources**:  
+- **Personal dataset**  
+  - 15,157 images across 16 different classes.  
+  - 7 classes were integrated into the final dataset.  
+  - The full dataset is also available on *Kaggle*.  
 
----
+- **PlantVillage dataset**  
+  - A popular benchmark dataset for plant disease classification.  
+  - 23 classes were included in the final dataset.  
 
-## 📈 Results
-
-- The **CNN** achieved the best performance as expected  
-- Surprisingly, a **Random Forest with Featurization + Transfer Learning** on small images (32×32) also showed notable effectiveness, despite the sensitivity of this task to image size  
-
----
-
-## ⏭️ Future Work
-
-Areas for further improvement and experimentation:
-
-- Use **larger networks** (e.g., AlexNet) with higher resolution images  
-- Combine the **two full datasets** → ~75,000 images and 54 classes  
-- Leverage **greater computational resources** for deeper optimization and experimentation  
+➡️ **Final combined dataset**: **43,910 images**
 
 ---
 
-## 📌 Project Highlights
+## 🧠 Models Tested and Compared
 
-- ✅ 30 plant disease classes  
-- ✅ Custom dataset built with real-world farming expertise  
-- ✅ CNN with custom loss for class imbalance  
-- ✅ Experiments with both DL and traditional ML methods  
+Several **Machine Learning models** were trained and compared using **Spark**:
+
+### 1. Convolutional Neural Network (CNN)
+- Implemented with **Horovod** for distributed training on Spark DataFrames.  
+- **Best performing model**.  
+- **Results**:  
+  - Accuracy: `0.92`  
+  - Precision: `0.92`  
+  - Recall: `0.92`  
+  - F1 Score: `0.92`  
 
 ---
 
-## 📜 License
+### 2. Multilayer Perceptron (MLP)
+- Implemented natively in **PySpark**.  
+- Activation functions: **Sigmoid** for hidden layers, **Softmax** for output.  
+- **Results**:  
+  - Accuracy: `0.65`  
+  - Precision: `0.65`  
+  - Recall: `0.66`  
+  - F1 Score: `0.64`  
 
-This project is released under the **MIT License**.
+---
+
+### 3. Random Forest
+Two implementations were tested:
+
+- **Simple Random Forest** (basic approach)  
+  - Accuracy: `0.18`  
+  - Precision: `0.24`  
+  - Recall: `0.18`  
+  - F1 Score: `0.12`  
+
+- **Random Forest with DNN Featurization & Transfer Learning**  
+  - Used **SynapseML** (formerly *MMLSpark*).  
+  - Features extracted with a **pre-trained CNN on CIFAR-10 (32x32)**.  
+  - Accuracy: `0.53`  
+  - Precision: `0.53`  
+  - Recall: `0.53`  
+  - F1 Score: `0.53`  
+
+---
+
+## 💻 Final Application
+
+A simple **Streamlit web app** was created to showcase the results.  
+- Users can upload an image of a plant leaf 🌿.  
+- The model predicts the **disease class**.  
+- Code available in **`app.py`**.
+
+---
+
+## 🚀 Tech Stack
+- **Apache Spark**  
+- **Horovod**  
+- **SynapseML**  
+- **Streamlit**  
+- **Python (ML / DL libraries)**  
+
+---
+
+## 📊 Performance Summary
+
+| Model                                   | Accuracy | Precision | Recall | F1 Score |
+|----------------------------------------|----------|-----------|--------|----------|
+| Convolutional Neural Network (CNN)      | 0.92     | 0.92      | 0.92   | 0.92     |
+| Multilayer Perceptron (MLP)             | 0.65     | 0.65      | 0.66   | 0.64     |
+| Random Forest (basic)                   | 0.18     | 0.24      | 0.18   | 0.12     |
+| Random Forest + DNN Featurization (CIFAR-10) | 0.53 | 0.53      | 0.53   | 0.53     |
+
+---
+
+## 📌 How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/plant-disease-classification.git
+   cd plant-disease-classification
