@@ -95,4 +95,14 @@ A simple **Streamlit web app** was created to showcase the results.
 | Random Forest (basic)                   | 0.18     | 0.24      | 0.18   | 0.12     |
 | Random Forest + DNN Featurization (CIFAR-10) | 0.53 | 0.53      | 0.53   | 0.53     |
 
+## 📝 Final Remarks
+
+As expected, the model with the best performance is the **Convolutional Neural Network (CNN)**, which is one of the most popular models in image classification tasks.  
+
+Overall, the performance of the **Random Forest with DNN Featurization and Transfer Learning** was quite interesting, considering it works on very small images (32x32) and this task is highly sensitive to image size (the higher the resolution, the better the performance).  
+
+It would have been extremely intriguing to try the same approach with a larger network, such as **AlexNet**, trained on bigger images.  
+It also would have been interesting to test all these models with larger images while keeping the original idea of creating a very large dataset composed of both the **PlantVillage dataset** and the **personal dataset**.  
+
+In general, having more resources would have left more room for further experimentation.  
 
