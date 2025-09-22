@@ -106,3 +106,11 @@ It also would have been interesting to test all these models with larger images 
 
 In general, having more resources would have left more room for further experimentation.  
 
+---
+
+## 🎥 Demonstrations  
+
+Full [demo video](https://www.youtube.com/watch?v=5vb8_oCkY-Q)
+
+---
+
